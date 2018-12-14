@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import './App.css';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import PizzaForm from './PizzaForm';
 
 const MAIN_QUERY = gql`
   {
@@ -40,7 +41,7 @@ class App extends Component {
                 if (loading) return <div>Fetching</div>;
                 if (error) return <div>Error</div>;
                 console.log(data);
-                return <div>Success!</div>
+                return <PizzaForm pizzaSizes={data.pizzaSizes} />;
               }
             }
           </Query>

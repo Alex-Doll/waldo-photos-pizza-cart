@@ -1,0 +1,6 @@
+import React, { Component } from 'react';
+import PropType from 'prop-types';
+
+class PizzaForm extends Component {
+  
+}
