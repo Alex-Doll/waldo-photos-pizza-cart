@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { setPizzaSize } from './store';
+import { setPizzaSize, setDefaultToppings } from './store';
 
 
 class PizzaSizePicker extends Component {
   handleSizeSelect = (event) => {
     const pizzaSizeName = event.target.value;
+    const defaultToppings = this.props.sizes.filter(sizeObj => sizeObj.name === pizzaSizeName)[0].toppings.filter(toppingObj => toppingObj.defaultSelected);
     this.props.setPizzaSize(pizzaSizeName);
+    this.props.setDefaultToppings(defaultToppings);
   }
   
   render() {
@@ -40,4 +42,4 @@ const mapStateToProps = (state) => ({
   size: state.pizza.size
 });
 
-export default connect(mapStateToProps, { setPizzaSize })(PizzaSizePicker);
+export default connect(mapStateToProps, { setPizzaSize, setDefaultToppings })(PizzaSizePicker);

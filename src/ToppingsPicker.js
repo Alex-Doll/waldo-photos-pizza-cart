@@ -18,7 +18,6 @@ class ToppingsPicker extends Component {
 
   
   render() {
-    console.log(this.props.selectedToppings);
     const checkboxes = this.props.availableToppings.map((toppingData, index) => (
       <div key={index}>
         <input
@@ -26,7 +25,7 @@ class ToppingsPicker extends Component {
           id={toppingData.topping.name}
           value={toppingData.topping.name}
           name='toppings'
-          checked={this.props.selectedToppings.includes(toppingData.topping.name)}
+          checked={this.props.selectedToppingsNames.includes(toppingData.topping.name)}
           onChange={this.handleToggleTopping}
         />
         <label htmlFor={toppingData.topping.name}>
@@ -53,7 +52,8 @@ ToppingsPicker.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  selectedToppings: state.pizza.toppings.map(toppingObj => toppingObj.topping.name)
+  selectedToppingsNames: state.pizza.toppings.map(toppingObj => toppingObj.topping.name),
+  selectedToppings: state.pizza.toppings
 });
 
 export default connect(mapStateToProps, {addPizzaTopping, removePizzaTopping })(ToppingsPicker);

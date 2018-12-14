@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 
 const SET_PIZZA_DATA = 'SET_PIZZA_DATA';
 const SET_PIZZA_SIZE = 'SET_PIZZA_SIZE';
+const SET_DEFAULT_TOPPINGS = 'SET_DEFAULT_TOPPINGS';
 const ADD_PIZZA_TOPPING = 'ADD_PIZZA_TOPPING';
 const REMOVE_PIZZA_TOPPING = 'REMOVE_PIZZA_TOPPING';
 const ADD_PIZZA_TO_CART = 'ADD_PIZZA_TO_CART';
@@ -41,6 +42,13 @@ export const addPizzaToCart = (pizza) => {
   }
 }
 
+export const setDefaultToppings = (toppings) => {
+  return {
+    type: SET_DEFAULT_TOPPINGS,
+    toppings
+  };
+};
+
 const rootReducer = (state, action) => {
   let newState = Object.assign({}, state);
 
@@ -51,6 +59,9 @@ const rootReducer = (state, action) => {
     case SET_PIZZA_SIZE:
       let sizeData = state.pizzaData.filter(sizeObj => sizeObj.name === action.size)[0];
       newState.pizza.size = sizeData;
+      return newState;
+    case SET_DEFAULT_TOPPINGS:
+      newState.pizza.toppings = action.toppings;
       return newState;
     case ADD_PIZZA_TOPPING:
       const toppingData1 = state.pizza.size.toppings.filter(toppingObj => toppingObj.topping.name === action.topping)[0];
