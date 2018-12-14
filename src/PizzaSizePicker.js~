@@ -1,0 +1,19 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+
+class PizzaSizePicker extends Component {
+  render() {
+    return (
+    );
+  }
+}
+
+PizzaSizePicker.propTypes = {
+}
+
+const mapStateToProps = (state) => {
+  size: state.pizza.size
+}
+
+export default connect(mapStateToProps, { addPizzaSize })(PizzaSizePicker);
