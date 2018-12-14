@@ -3,12 +3,17 @@ import PropTypes from 'prop-types';
 import ToppingsPicker from './ToppingsPicker';
 import PizzaSizePicker from './PizzaSizePicker';
 import { connect } from 'react-redux';
-import { setPizzaData, setPizzaSize, addPizzaTopping, removePizzaTopping } from './store';
+import { setPizzaData, setPizzaSize, addPizzaTopping, removePizzaTopping, addPizzaToCart } from './store';
 
 class PizzaForm extends Component {
   constructor(props) {
     super(props);
     this.props.setPizzaData(this.props.pizzaData);
+  }
+
+  handleAddToCart = (event) => {
+    event.preventDefault();
+    this.props.addPizzaToCart(this.props.currentPizza);
   }
 
   render() {
@@ -24,6 +29,11 @@ class PizzaForm extends Component {
             />
           )
         }
+        { this.props.pizzaSize.name &&
+          (
+            <button onClick={this.handleAddToCart}>Add To Cart</button>
+          )
+        }
       </div>
     );
   }
@@ -34,7 +44,8 @@ PizzaForm.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  pizzaSize: state.pizza.size
+  pizzaSize: state.pizza.size,
+  currentPizza: state.pizza
 });
 
-export default connect(mapStateToProps, { setPizzaData, setPizzaSize, addPizzaTopping, removePizzaTopping })(PizzaForm);
+export default connect(mapStateToProps, { setPizzaData, setPizzaSize, addPizzaTopping, removePizzaTopping, addPizzaToCart })(PizzaForm);

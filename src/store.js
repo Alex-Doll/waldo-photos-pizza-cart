@@ -73,7 +73,8 @@ const rootReducer = (state, action) => {
       newState.pizza.toppings = newToppings;
       return newState;
     case ADD_PIZZA_TO_CART:
-      return state;
+      newState.cart.push(action.pizza);
+      return newState;
     default:
       return state;
   }

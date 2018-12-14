@@ -5,11 +5,19 @@ import { connect } from 'react-redux';
 import { addPizzaTopping, removePizzaTopping } from './store';
 
 class ToppingsPicker extends Component {
+  _isLessThanMaxToppings() {
+    if (this.props.maxToppings === null) return true;
+
+    return this.props.selectedToppings.length < this.props.maxToppings;
+  }
+
   handleToggleTopping = (event) => {
     const topping = event.target;
 
     if (topping.checked) {
-      this.props.addPizzaTopping(topping.value);
+      if (this._isLessThanMaxToppings()) {
+        this.props.addPizzaTopping(topping.value);
+      }
     }
     else {
       this.props.removePizzaTopping(topping.value);
