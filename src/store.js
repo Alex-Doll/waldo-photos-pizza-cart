@@ -53,11 +53,12 @@ const rootReducer = (state, action) => {
       newState.pizza.size = sizeData;
       return newState;
     case ADD_PIZZA_TOPPING:
-      newState = Object.assign({}, state);
-      newState.pizza.toppings.push(action.topping);
+      const toppingData1 = state.pizza.size.toppings.filter(toppingObj => toppingObj.topping.name === action.topping)[0];
+      newState.pizza.toppings.push(toppingData1);
       return newState;
     case REMOVE_PIZZA_TOPPING:
-      let newToppings = newState.pizza.toppings.filter(topping => JSON.stringify(topping) !== JSON.stringify(action.topping));
+      const toppingData2 = state.pizza.size.toppings.filter(toppingObj => toppingObj.topping.name === action.topping)[0];
+      let newToppings = newState.pizza.toppings.filter(topping => JSON.stringify(topping) !== JSON.stringify(toppingData2));
       newState.pizza.toppings = newToppings;
       return newState;
     case ADD_PIZZA_TO_CART:
