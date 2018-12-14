@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ToppingsPicker from './ToppingsPicker';
 
 class PizzaForm extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class PizzaForm extends Component {
     });
   }
 
+
   render() {
     const pizzaPicker = this.props.pizzaSizes.map((size, index) => {
       return (
@@ -27,12 +29,18 @@ class PizzaForm extends Component {
         </div>
       );
     });
+
+    let pizzaData = null;
+    if (this.state.size) {
+      pizzaData = this.props.pizzaSizes.filter(size => size.name === this.state.size)[0];
+    }
     return (
       <div>
         <h1>This is the Pizza Form!</h1>
         <fieldset onChange={this.handleChange}>
           {pizzaPicker}
         </fieldset>
+        { this.state.size && <ToppingsPicker maxToppings={pizzaData.maxToppings} toppings={pizzaData.toppings} /> }
       </div>
     );
   }
