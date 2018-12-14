@@ -12,14 +12,28 @@ class ToppingsPicker extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this._isLessThanMaxToppings = this._isLessThanMaxToppings.bind(this);
+  }
+
+  _isLessThanMaxToppings() {
+    if (this.props.maxToppings === null) return true;
+
+    return this.state.toppings.length < this.props.maxToppings;
   }
 
   handleChange(event) {
+    let checkbox = event.target;
     const toppingName = event.target.value;
-    if (event.target.checked) {
-      this.setState(prevState => ({
-        toppings: [...prevState.toppings, toppingName]
-      }));
+
+    if (checkbox.checked) {
+      if (this._isLessThanMaxToppings()) {
+        this.setState(prevState => ({
+          toppings: [...prevState.toppings, toppingName]
+        }));
+      }
+      else {
+        checkbox.checked = false;
+      }
     }
     else {
       this.setState(prevState => ({
