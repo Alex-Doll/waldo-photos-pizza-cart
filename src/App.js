@@ -12,9 +12,9 @@ class App extends Component {
     const store = createStore(rootReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
     return (
       <Provider store={store}>
-      <div className="App">
-        <h1>Waldo Photos Pizza Cart</h1>
-      </div>
+        <div className="App">
+          <h1>Waldo Photos Pizza Cart</h1>
+        </div>
       </Provider>
     );
   }
