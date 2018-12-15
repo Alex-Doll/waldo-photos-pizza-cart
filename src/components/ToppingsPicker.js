@@ -12,15 +12,15 @@ class ToppingsPicker extends Component {
   }
 
   handleToggleTopping = (event) => {
-    const topping = event.target;
+    const topping = this.props.availableToppings.filter(topping => topping.topping.name === event.target.value)[0];
 
-    if (topping.checked) {
+    if (event.target.checked) {
       if (this._isLessThanMaxToppings()) {
-        this.props.addPizzaTopping(topping.value);
+        this.props.addPizzaTopping(topping);
       }
     }
     else {
-      this.props.removePizzaTopping(topping.value);
+      this.props.removePizzaTopping(topping);
     }
   }
 

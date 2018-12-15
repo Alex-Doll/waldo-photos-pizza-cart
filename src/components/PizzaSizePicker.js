@@ -7,9 +7,9 @@ import { setPizzaSize, setDefaultToppings } from '../actions';
 
 class PizzaSizePicker extends Component {
   handleSizeSelect = (event) => {
-    const pizzaSizeName = event.target.value;
-    const defaultToppings = this.props.sizes.filter(sizeObj => sizeObj.name === pizzaSizeName)[0].toppings.filter(toppingObj => toppingObj.defaultSelected);
-    this.props.setPizzaSize(pizzaSizeName);
+    const pizzaSizeObj = this.props.sizes.filter(sizeObj => sizeObj.name === event.target.value)[0];
+    const defaultToppings = pizzaSizeObj.toppings.filter(toppingObj => toppingObj.defaultSelected);
+    this.props.setPizzaSize(pizzaSizeObj);
     this.props.setDefaultToppings(defaultToppings);
   }
   

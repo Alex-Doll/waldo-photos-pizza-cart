@@ -9,13 +9,10 @@ const initialState = [];
 export const cart = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PIZZA_TO_CART:
-      let newState6 = Object.assign({}, state);
-      newState6.cart.push(action.pizza);
-      return newState6;
+      return [...state, action.pizza];
     case REMOVE_PIZZA_FROM_CART:
-      let newState7 = Object.assign({}, state);
-      newState7.cart = state.cart.filter(pizza => JSON.stringify(pizza) !== JSON.stringify(action.pizza))
-      return newState7;
+      const newCart = state.filter(pizza => JSON.stringify(pizza) !== JSON.stringify(action.pizza));
+      return newCart;
     default:
       return state;
   }

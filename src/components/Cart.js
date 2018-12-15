@@ -8,7 +8,17 @@ class Cart extends Component {
     return (
       <div>
         <h3>Your Pizza Cart!</h3>
-        {this.props.cart}
+        {this.props.cart.map((pizza, index) => (
+          <div key={index}>
+            <h4>{pizza.size.name} at {pizza.size.basePrice}</h4>
+            <ul>
+              {pizza.toppings.map((topping, index) => (
+                <li key={index}>{topping.topping.name} at {topping.topping.price}</li>
+              ))}
+            </ul>
+            <button onClick={this.props.removePizzaFromCart.bind(this, pizza)}>Remove from cart</button>
+          </div>
+        ))}
       </div>
     );
   }
@@ -20,7 +30,7 @@ Cart.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  cart: state.cart.map(pizza => pizza.size.name)
+  cart: state.cart
 });
 
 export default connect(mapStateToProps, { removePizzaFromCart })(Cart);

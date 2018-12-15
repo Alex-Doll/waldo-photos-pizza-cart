@@ -10,9 +10,7 @@ const initialState = [];
 const pizzaData = (state = initialState, action) => {
   switch (action.type) {
     case SET_PIZZA_DATA:
-      let newState1 = Object.assign({}, state);
-      newState1.pizzaData = action.data;
-      return newState1;
+      return action.data;
     default:
       return state;
   }
