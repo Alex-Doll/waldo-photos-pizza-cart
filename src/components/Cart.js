@@ -4,6 +4,15 @@ import { connect } from 'react-redux';
 import { removePizzaFromCart } from '../actions';
 
 class Cart extends Component {
+  getCartCost = () => {
+    let cartCost = 0;
+    this.props.cart.forEach(pizza => {
+      const toppingsCost = pizza.toppings.reduce((acc, toppingObj) => acc + toppingObj.topping.price, 0);
+      cartCost += pizza.size.basePrice + toppingsCost;
+    });
+
+    return cartCost;
+  }
   render() {
     return (
       <div>
@@ -20,6 +29,7 @@ class Cart extends Component {
             <button onClick={this.props.removePizzaFromCart.bind(this, pizza)}>Remove from cart</button>
           </div>
         ))}
+      <h3>Total Cost of Cart: ${this.getCartCost.call(this).toFixed(2)}</h3>
       </div>
     );
   }
