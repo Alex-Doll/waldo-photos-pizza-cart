@@ -4,7 +4,10 @@ import { InMemoryCache }  from 'apollo-cache-inmemory';
 
 
 const httpLink = createHttpLink({
-  uri: 'http://core-graphql.dev.waldo.photos/pizza'
+  uri: 'http://core-graphql.dev.waldo.photos/pizza',
+  fetchOptions: {
+    mode: 'no-cors'
+  }
 });
 
 export const apolloClient = new ApolloClient({
