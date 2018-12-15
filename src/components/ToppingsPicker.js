@@ -37,14 +37,14 @@ class ToppingsPicker extends Component {
           onChange={this.handleToggleTopping}
         />
         <label htmlFor={toppingData.topping.name}>
-          {toppingData.topping.name}
+          {`${toppingData.topping.name} - $${toppingData.topping.price.toFixed(2)}`}
         </label>
       </div>
     ));
     
     return (
       <div>
-        <h2>Max Toppings {this.props.maxToppings === null ? 'Inf' : this.props.maxToppings}</h2>
+        <h2>Max Toppings: {this.props.maxToppings === null ? 'Unlimited' : this.props.maxToppings}</h2>
         <fieldset>
           {checkboxes}
         </fieldset>

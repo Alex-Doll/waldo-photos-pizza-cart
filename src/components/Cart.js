@@ -10,12 +10,13 @@ class Cart extends Component {
         <h3>Your Pizza Cart!</h3>
         {this.props.cart.map((pizza, index) => (
           <div key={index}>
-            <h4>{pizza.size.name} at {pizza.size.basePrice}</h4>
+            <h4>{pizza.size.name} at ${pizza.size.basePrice.toFixed(2)}</h4>
             <ul>
               {pizza.toppings.map((topping, index) => (
-                <li key={index}>{topping.topping.name} at {topping.topping.price}</li>
+                <li key={index}>{topping.topping.name} at ${topping.topping.price.toFixed(2)}</li>
               ))}
             </ul>
+            <h4>Total Cost: ${pizza.toppings.reduce((acc, topping) => acc + topping.topping.price, pizza.size.basePrice).toFixed(2)}</h4>
             <button onClick={this.props.removePizzaFromCart.bind(this, pizza)}>Remove from cart</button>
           </div>
         ))}

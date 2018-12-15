@@ -27,7 +27,7 @@ class PizzaSizePicker extends Component {
       <fieldset onChange={this.handleSizeSelect}>
         {sizeInputs}
         <h3>Base Price</h3>
-        <p>{this.props.size.basePrice ? this.props.size.basePrice : '$0.00'}</p>
+        <p>{this.props.size.basePrice ? `$${this.props.size.basePrice}` : '$0.00'}</p>
       </fieldset>
     );
   }
