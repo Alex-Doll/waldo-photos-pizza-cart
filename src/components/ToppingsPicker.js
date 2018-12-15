@@ -37,7 +37,7 @@ class ToppingsPicker extends Component {
           onChange={this.handleToggleTopping}
         />
         <label htmlFor={toppingData.topping.name}>
-          {toppingData.topping.name}{toppingData.defaultSelected ? 'TRUE' : 'FALSE'}
+          {toppingData.topping.name}
         </label>
       </div>
     ));
