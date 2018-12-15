@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { addPizzaTopping, removePizzaTopping } from './store';
+import { addPizzaTopping, removePizzaTopping } from '../actions';
 
 class ToppingsPicker extends Component {
   _isLessThanMaxToppings() {

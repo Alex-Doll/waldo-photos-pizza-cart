@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ToppingsPicker from './ToppingsPicker';
 import PizzaSizePicker from './PizzaSizePicker';
 import { connect } from 'react-redux';
-import { setPizzaData, setPizzaSize, addPizzaTopping, removePizzaTopping, addPizzaToCart } from './store';
+import { setPizzaData, setPizzaSize, addPizzaTopping, removePizzaTopping, addPizzaToCart } from '../actions';
 
 class PizzaForm extends Component {
   constructor(props) {

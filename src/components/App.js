@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import './App.css';
+import '../styles/App.css';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import PizzaForm from './PizzaForm';
 import Cart from './Cart';
-import { store } from './store';
+import { store } from '../store';
 
 const MAIN_QUERY = gql`
   {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { setPizzaSize, setDefaultToppings } from './store';
+import { setPizzaSize, setDefaultToppings } from '../actions';
 
 
 class PizzaSizePicker extends Component {

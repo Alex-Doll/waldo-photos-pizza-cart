@@ -1,4 +1,17 @@
-export const pizzaCreation = (state, action) => {
+import {
+  SET_PIZZA_SIZE,
+  SET_DEFAULT_TOPPINGS,
+  ADD_PIZZA_TOPPING,
+  REMOVE_PIZZA_TOPPING
+} from '../constants/ActionTypes';
+
+
+const initialState = {
+  size: {},
+  toppings: []
+}
+
+export const pizza = (state = initialState, action) => {
   switch (action.type) {
     case SET_PIZZA_SIZE:
       let newState2 = Object.assign({}, state);

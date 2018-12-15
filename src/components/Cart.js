@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removePizzaFromCart } from './store';
+import { removePizzaFromCart } from '../actions';
 
 class Cart extends Component {
   render() {

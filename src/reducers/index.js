@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux';
 
-import { pizzaCreation } from './pizza';
+import { pizza } from './pizza';
 import { cart } from './cart';
+import { SET_PIZZA_DATA } from '../constants/ActionTypes';
 
 
-const seedData = (state, action) => {
+const initialState = [];
+
+const pizzaData = (state = initialState, action) => {
   switch (action.type) {
     case SET_PIZZA_DATA:
       let newState1 = Object.assign({}, state);
@@ -17,7 +20,7 @@ const seedData = (state, action) => {
 
 
 export default combineReducers({
-  seedData,
-  pizzaCreation,
+  pizzaData,
+  pizza,
   cart
 });
